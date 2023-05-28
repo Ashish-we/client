@@ -3,7 +3,7 @@ import axios from "axios";
 import { Await, Link } from "react-router-dom" 
 
 
-const dashboard =({token}) => { 
+const dashboard =({token,name,skills,mail}) => { 
 
 const token1 = token;
 const [data, setData] = useState('');
@@ -11,10 +11,12 @@ const [data, setData] = useState('');
   console.log(token1);
 
 
-  // useEffect((token1) => {
+  
+
+
+  useEffect(() => {
    
     
-
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
@@ -22,9 +24,10 @@ const [data, setData] = useState('');
       headers: { 
         'Accept': 'application/vnd.api+json', 
         'Content-Type': 'application/vnd.api+json', 
-        'Authorization': `Bearer ${token1}`,
+        'Authorization': `Bearer ${token}`,
       }
     };
+   
     
     axios.request(config)
     .then((response) => {
@@ -34,47 +37,47 @@ const [data, setData] = useState('');
 
       // const data1 =  JSON.stringify(response.data);
       // console.log(data1);
-      return JSON.stringify(response.data);
+      // return JSON.stringify(response.data);
     })
     .catch((error) => {
       console.log(error);
     });
     
 
-    // const data2 = config.JSON.stringify(response.data);
-    // console.log(data);
+  //   // const data2 = config.JSON.stringify(response.data);
+  //   // console.log(data);
 
-    // console.log(data.user.name);
+  //   // console.log(data.user.name);
 
-    // const user = {
-    //   name: data.data.user.name,
-    //   email: data.data.user.email,
-    //   skills: data.data.user.skills,
-    // }
+  //   // const user = {
+  //   //   name: data.data.user.name,
+  //   //   email: data.data.user.email,
+  //   //   skills: data.data.user.skills,
+  //   // }
 
 
 
-    // let config = {
-    //   method: "get",
-    //   url: "http://127.0.0.1:8000/api/details",
-    //   headers: {
-    //     "Authorization": `Bearer ${token2}`,
-    //   },
-    // }
-    // console.log(config);
-    // let data =  JSON.stringify(config);
+  //   // let config = {
+  //   //   method: "get",
+  //   //   url: "http://127.0.0.1:8000/api/details",
+  //   //   headers: {
+  //   //     "Authorization": `Bearer ${token2}`,
+  //   //   },
+  //   // }
+  //   // console.log(config);
+  //   // let data =  JSON.stringify(config);
   
-    // console.log(data);
+  //   // console.log(data);
   
-    //   const user  = { 
-    //     name: data.data,
+  //   //   const user  = { 
+  //   //     name: data.data,
   
   
-    //   }
-    //   console.log(data);
+  //   //   }
+  //   //   console.log(data);
 
-    console.log(data);
-  // }, []);
+  //   console.log(data);
+  }, []);
 
 
 
@@ -129,9 +132,9 @@ const [data, setData] = useState('');
               <h2
                 className="font-medium text-xs md:text-sm text-center text-teal-500"
               >
-                {/* Name : {user.name} */}
+               {name}
               </h2>
-              <p className="text-xs text-gray-500 text-center">User</p>
+              <p className="text-xs text-gray-500 text-center">{mail}</p>
             </div>
           </div>
           <div
@@ -174,7 +177,7 @@ const [data, setData] = useState('');
                   d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                 ></path>
               </svg>
-              <span className="">Dashboard</span>
+              <span className="">{skills}</span>
             </a>
             <a
               href=""

@@ -18,13 +18,16 @@ import Dashboard from "./components/dashboard";
 
 const App = () => {
   const [token, setToken] = useState(null);
+  const [name, setName] = useState(null);
+  const [mail, setMail] = useState(null);
+  const [skills, setSkills] = useState(null);
   return (
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Landing />}  />
-    <Route path="/login" element={<Login setToken={setToken}/>}  />
+    <Route path="/login" element={<Login setToken={setToken} setName={setName} setMail={setMail} setSkills={setSkills} />}  />
     <Route path="/register" element={<Signup />}  />
-    <Route path = "/dashboard" element = {<Dashboard token={token}/>} /> 
+    <Route path = "/dashboard" element = {<Dashboard token={token} name={name} mail={mail} skills={skills} />} /> 
     {/* <Route path="/contact" element={<Contact />}  /> */}
     {/* <Skill /> */} 
     {/* <Route path = "/faq" element = {<Faq />} />

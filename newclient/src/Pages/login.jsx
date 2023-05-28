@@ -8,7 +8,7 @@ import Loginapi from "../Request";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 
-const Login = ({setToken}) => {
+const Login = ({setToken,setName,setMail,setSkills}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +32,15 @@ const Login = ({setToken}) => {
       .then((response) => {
         console.log(response.data);
         console.log(response.data.data.token);
+        console.log(response.data.data.user.name);
+        console.log(response.data.data.user.email);
+        console.log(response.data.data.user.skills);
+
+        setName(response.data.data.user.name);
+        setMail(response.data.data.user.email);
+        setSkills(response.data.data.user.skills);
+        
+
         const token = response.data.data.token
         setToken(token); // Pass the token to setToken function
         setIsLoggedIn(true);  
